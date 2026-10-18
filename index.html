@@ -305,6 +305,56 @@
 .text-\[clamp\(2\.3rem\,3\.6vw\,3\.6rem\)\]{font-size:clamp(2.3rem,3.6vw,3.6rem)}
 .text-\[clamp\(2\.6rem\,4\.6vw\,4\.6rem\)\]{font-size:clamp(2.6rem,4.6vw,4.6rem)}
 @media (min-width:64rem){.lg\:py-28{padding-top:7rem;padding-bottom:7rem}.lg\:grid-cols-\[minmax\(0\,0\.8fr\)_minmax\(0\,1\.2fr\)\]{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+
+/* ===== v4: industry pains, context graph, governance groups ===== */
+.outcome-list{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:1rem}
+.outcome-list li{display:flex;gap:.85rem;align-items:flex-start}
+.outcome-list li>span{flex:0 0 38px;height:38px;border-radius:12px;display:grid;place-items:center}
+.outcome-list b{display:block;font-size:16.5px;color:#0f172a}
+.outcome-list p{font-size:14px;color:#64748b;line-height:1.45}
+.pain summary{justify-content:flex-start;font-size:17px}
+.pain summary span[aria-hidden]{margin-left:auto}
+.pain-n{font-family:var(--font-mono);font-size:12px;font-weight:700;color:#94a3b8;min-width:1.75rem}
+.pain[open] .pain-n{color:var(--accent)}
+.pain-a{padding:0 0 1.3rem 2.75rem}
+.pain-a p{padding:0 0 .7rem;font-size:16px;color:#334155}
+.powered{display:inline-flex;align-items:center;gap:.35rem;margin-top:.6rem;font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border-radius:999px;border:1px solid}
+.pain-a .powered{margin-top:0}
+.pw-violet{color:var(--accent);background:var(--accent-soft);border-color:#863bff33}
+.pw-green{color:#047857;background:#ecfdf5;border-color:#a7f3d0}
+.pw-amber{color:#b45309;background:#fffbeb;border-color:#fde68a}
+.pw-blue{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.cg-section{background:linear-gradient(180deg,#fff,var(--paper-3))}
+.graph{display:block;width:100%;height:auto}
+.g-edge{stroke:#c4b5fd;stroke-width:1.5;stroke-dasharray:5 5;animation:gflow 2.4s linear infinite}
+@keyframes gflow{to{stroke-dashoffset:-20}}
+.g-halo{fill:#863bff14;animation:ghalo 2.6s ease-in-out infinite;transform-origin:260px 210px}
+@keyframes ghalo{50%{transform:scale(1.12);fill:#863bff22}}
+.g-center{fill:#fff;font-size:14px;font-weight:700;font-family:var(--font-sans)}
+.g-center-s{fill:#e9d5ff;font-size:10px;font-family:var(--font-sans)}
+.g-node rect{fill:#fff;stroke:#e2e8f0}
+.g-type{font-family:var(--font-mono);font-size:8.5px;letter-spacing:.08em;fill:#94a3b8}
+.g-name{font-family:var(--font-sans);font-size:12.5px;font-weight:600;fill:#0f172a}
+.g-new rect{stroke:#f59e0b;stroke-width:1.5;animation:gnew 2.6s ease-in-out infinite}
+@keyframes gnew{50%{stroke:#fde68a}}
+.flow-5{grid-template-columns:repeat(5,1fr)}
+.flow-5:before{left:10%;right:10%}
+.arch-notes-4{grid-template-columns:repeat(4,1fr)}
+.node-hl{border-color:#863bff80;background:var(--paper-3);box-shadow:0 0 0 3px #863bff1a}
+.gov-hl{border-color:#f59e0b;box-shadow:0 0 0 3px #f59e0b1a}
+.gov-groups{margin-top:2rem;display:grid;gap:1.4rem}
+.gov-grp-t{font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#64748b;margin-bottom:.6rem}
+.gov-groups .gov-list{margin-top:0;gap:.7rem}
+.audit{border:1px solid #e2e8f0;border-radius:.75rem;overflow:hidden;font-size:12.5px}
+.audit-h,.audit-r{display:grid;grid-template-columns:1fr 1.25fr 1.15fr auto;gap:.5rem;align-items:center;padding:.55rem .75rem}
+.audit-h{background:#f8fafc;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8}
+.audit-r{border-top:1px solid #e2e8f0;color:#334155}
+.audit-r span:first-child{font-weight:600;color:#0f172a}
+@media (max-width:63.99rem){.flow-5{grid-template-columns:repeat(2,1fr)}.arch-notes-4{grid-template-columns:1fr 1fr}}
+@media (max-width:39.99rem){.arch-notes-4{grid-template-columns:1fr}.audit-h{display:none}.audit-r{grid-template-columns:1fr auto}.audit-r span:nth-child(2),.audit-r span:nth-child(3){display:none}}
+@media (prefers-reduced-motion:reduce){.g-edge,.g-halo,.g-new rect{animation:none}}
+.max-w-\[54ch\]{max-width:54ch}.max-w-\[60ch\]{max-width:60ch}
+.faq[open] summary .pain-n{transform:none}
 </style>
 </head>
 <body>
@@ -344,14 +394,28 @@
 <main>
 <section class="pt-32 pb-12 lg:pt-40 lg:pb-16 relative overflow-hidden bg-slate-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-    <div class="max-w-4xl reveal">
-      <a href="https://wexa.ai/solutions" class="mb-5 inline-flex items-center gap-2 font-mono text-[12px] font-bold uppercase tracking-[0.14em] text-slate-500 hover:text-slate-900">← Solutions</a>
-      <p class="mb-5 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent">IT service management</p>
-      <h1 class="font-black tracking-[-0.05em] text-[clamp(2.6rem,4.6vw,4.6rem)] leading-[1.03] text-slate-950">An AI service desk that resolves IT requests where your people already work</h1>
-      <p class="mt-6 max-w-[64ch] text-[19px] font-medium leading-8 text-slate-700">Employees ask in Slack, Teams, email, web chat or phone. Wexa answers from your knowledge, raises tickets in your existing tool, and turns repeat requests into automations that run on their own. Every action is governed and audited.</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="https://calendly.com/vamsi-krishna-wexa/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 font-medium rounded-lg cursor-pointer select-none bg-accent text-white hover:bg-accent-hover shadow-[0_4px_14px_-3px_rgba(134,59,255,0.4)] h-13 px-7 text-base">Book a Demo <span aria-hidden="true">→</span></a>
-        <a href="#download" class="inline-flex items-center justify-center gap-2 font-medium rounded-lg cursor-pointer select-none bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-200 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)] h-13 px-7 text-base">Download the case study <span aria-hidden="true">↓</span></a>
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
+      <div class="reveal">
+        <a href="https://wexa.ai/solutions" class="mb-5 inline-flex items-center gap-2 font-mono text-[12px] font-bold uppercase tracking-[0.14em] text-slate-500 hover:text-slate-900">← Solutions</a>
+        <p class="mb-5 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent">Wexa ServiceOps · IT service management</p>
+        <h1 class="font-black tracking-[-0.05em] text-[clamp(2.6rem,4.6vw,4.6rem)] leading-[1.03] text-slate-950">IT requests resolved in chat, with full context and full control</h1>
+        <p class="mt-6 max-w-[60ch] text-[19px] font-medium leading-8 text-slate-700">One AI service desk behind Slack, Teams, email, web chat and phone. It knows who is asking through the Context graph, acts only within your policies, and resolves the request in the same conversation.</p>
+        <div class="mt-8 flex flex-wrap items-center gap-5">
+          <a href="https://calendly.com/vamsi-krishna-wexa/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 font-medium rounded-lg cursor-pointer select-none bg-accent text-white hover:bg-accent-hover shadow-[0_4px_14px_-3px_rgba(134,59,255,0.4)] h-13 px-7 text-base">Book a Demo <span aria-hidden="true">→</span></a>
+          <a href="#download" class="text-[15px] font-semibold text-slate-700 hover:text-accent">Download the case study ↓</a>
+        </div>
+      </div>
+      <div class="reveal rounded-[22px] border border-slate-200 bg-white p-6 sm:p-8 shadow-[0_24px_70px_-52px_rgba(15,23,42,0.35)]">
+        <p class="font-mono text-[12px] font-black uppercase tracking-[0.18em] text-slate-800">The outcome</p>
+        <ul class="outcome-list">
+          <li><span style="background:#10B98114;color:#059669"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Resolved in the conversation</b><p>Answered, ticketed or automated, without portals or forms</p></div></li>
+          <li><span style="background:#863bff14;color:#863bff"><svg class="ic"><use href="#i-graph"/></svg></span><div><b>Grounded in your organisation</b><p>The Context graph knows the person, their team, devices and apps</p></div></li>
+          <li><span style="background:#F59E0B14;color:#D97706"><svg class="ic"><use href="#i-shield"/></svg></span><div><b>Governed by default</b><p>Every action follows policy, sensitive steps need approval, everything is audited</p></div></li>
+          <li><span style="background:#3B82F614;color:#3B82F6"><svg class="ic"><use href="#i-repeat"/></svg></span><div><b>Gets better with every request</b><p>Smart Learning writes each action back</p></div></li>
+        </ul>
+        <div class="mt-6 border-t border-slate-200 pt-5">
+          <span class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Live today</span>
+        </div>
       </div>
     </div>
     <!-- Logo strip -->
@@ -371,13 +435,10 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="split">
       <div class="split-text">
-        <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent reveal">The problem</p>
-        <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950 reveal">Most IT requests have been answered before</h2>
-        <div class="points">
-          <div class="point reveal"><h3>Requests arrive everywhere</h3><p>Slack, Teams, email and phone, with no single front door. Each one needs a person to pick it up.</p></div>
-          <div class="point reveal"><h3>People wait for answers that already exist</h3><p>The fix is usually in a knowledge article or an old ticket. Finding it quickly is the hard part.</p></div>
-          <div class="point reveal"><h3>The same work gets done again and again</h3><p>Access, passwords and onboarding come up every week. Automating them has needed developers.</p></div>
-        </div>
+        <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent reveal">The industry problem</p>
+        <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950 reveal">Service desks are stuck on the same six problems</h2>
+        <p class="mt-5 text-[17px] text-slate-600 reveal">Open each one to see how Wexa solves it.</p>
+        <div class="faqs pains mt-8 reveal"><details class="faq pain" open><summary><span class="pain-n">01</span>Requests arrive in too many places<span aria-hidden="true">+</span></summary><div class="pain-a"><p>Wexa gives every channel one AI front door. Slack, Teams, email, web chat and phone all reach the same service desk.</p><span class="powered pw-blue">Powered by Wexa Desk agents</span></div></details><details class="faq pain"><summary><span class="pain-n">02</span>Answers exist, but no one can find them<span aria-hidden="true">+</span></summary><div class="pain-a"><p>Wexa answers from your knowledge base and the Context graph, and cites the source.</p><span class="powered pw-violet">Powered by Context graph</span></div></details><details class="faq pain"><summary><span class="pain-n">03</span>Every ticket starts with “who are you, and which device?”<span aria-hidden="true">+</span></summary><div class="pain-a"><p>Wexa already knows the person, their team, devices and apps, so tickets arrive with full context.</p><span class="powered pw-violet">Powered by Context graph</span></div></details><details class="faq pain"><summary><span class="pain-n">04</span>The same requests are solved again and again<span aria-hidden="true">+</span></summary><div class="pain-a"><p>Automation Core turns repeat work into automations, without code. The next similar request runs on its own.</p><span class="powered pw-amber">Powered by Automation Core</span></div></details><details class="faq pain"><summary><span class="pain-n">05</span>AI feels risky without control or an audit trail<span aria-hidden="true">+</span></summary><div class="pain-a"><p>Every action is checked against your policies, sensitive steps need a named approver, and everything is audited.</p><span class="powered pw-green">Powered by Governance</span></div></details><details class="faq pain"><summary><span class="pain-n">06</span>The desk never gets smarter<span aria-hidden="true">+</span></summary><div class="pain-a"><p>Smart Learning writes every action back to the Context graph, so the next request starts better.</p><span class="powered pw-blue">Powered by Smart Learning</span></div></details></div>
       </div>
       <div class="split-visual">
         <div class="vis-card reveal">
@@ -402,9 +463,9 @@
         <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent reveal">What we do</p>
         <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950 reveal">One front door that answers, raises and automates</h2>
         <div class="points caps">
-          <div class="point cap active" data-pane="0"><span class="cap-ic cap-green"><svg class="ic"><use href="#i-check"/></svg></span><h3>Answers with a source</h3><p>Replies in plain words, tailored to the person's team, location, device and apps, and shows which article the answer came from.</p></div>
-          <div class="point cap" data-pane="1"><span class="cap-ic cap-violet"><svg class="ic"><use href="#i-ticket"/></svg></span><h3>Tickets with full context</h3><p>No answer? A ticket is raised in your ticket tool with the conversation attached. Status updates come back to the same chat.</p></div>
-          <div class="point cap" data-pane="2"><span class="cap-ic cap-amber"><svg class="ic"><use href="#i-bolt"/></svg></span><h3>Automation Core</h3><p>Turns repeat work into automations, without code. Describe a task, or point at a resolved ticket, and Automation Core builds it. Once tested and approved, similar requests run on their own.</p></div>
+          <div class="point cap active" data-pane="0"><span class="cap-ic cap-green"><svg class="ic"><use href="#i-check"/></svg></span><h3>Answers with a source</h3><p>Replies in plain words, tailored to the person's team, location, device and apps, and shows which article the answer came from.</p><span class="powered pw-violet">Powered by Context graph</span></div>
+          <div class="point cap" data-pane="1"><span class="cap-ic cap-violet"><svg class="ic"><use href="#i-ticket"/></svg></span><h3>Tickets with full context</h3><p>No answer? A ticket is raised in your ticket tool with the conversation attached. Status updates come back to the same chat.</p><span class="powered pw-violet">Context graph</span> <span class="powered pw-green">Governance</span></div>
+          <div class="point cap" data-pane="2"><span class="cap-ic cap-amber"><svg class="ic"><use href="#i-bolt"/></svg></span><h3>Automation Core</h3><p>Turns repeat work into automations, without code. Describe a task, or point at a resolved ticket, and Automation Core builds it. Once tested and approved, similar requests run on their own.</p><span class="powered pw-green">Approved through Governance</span></div>
         </div>
       </div>
       <div class="split-visual">
@@ -438,17 +499,49 @@
     </div>
   </div>
 </section>
+<!-- ============ CONTEXT GRAPH SPOTLIGHT ============ -->
+<section id="context-graph" class="py-20 lg:py-28 relative cg-section">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="split">
+      <div class="split-text">
+        <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent reveal">Context graph</p>
+        <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950 reveal">It knows your organisation before the first question</h2>
+        <p class="mt-5 text-[17px] leading-8 text-slate-600 max-w-[54ch] reveal">A live map of your people, teams, devices, apps, tickets and knowledge, built from the systems you already use.</p>
+        <div class="points">
+          <div class="point reveal"><h3>Personal answers</h3><p>Replies fit the person's team, location, device and apps.</p></div>
+          <div class="point reveal"><h3>Tickets with context</h3><p>No back-and-forth asking for details. The ticket already knows who, what and which device.</p></div>
+          <div class="point reveal"><h3>Always current</h3><p>Every agent action is written back as it happens, through Smart Learning.</p></div>
+        </div>
+      </div>
+      <div class="split-visual">
+        <div class="vis-card reveal">
+          <div class="vis-head"><span class="flex items-center gap-2"><svg class="ic"><use href="#i-graph"/></svg>Context graph · one employee</span><span class="pill pill-green">Live</span></div>
+          <svg class="graph" viewBox="0 0 520 420" role="img" aria-label="Context graph: one employee connected to their department, manager, laptop, apps, tickets, knowledge articles and automation runs">
+              <line x1="260" y1="210" x2="260" y2="52" class="g-edge" style="animation-delay:0.00s"/><line x1="260" y1="210" x2="104" y2="112" class="g-edge" style="animation-delay:0.35s"/><line x1="260" y1="210" x2="416" y2="112" class="g-edge" style="animation-delay:0.70s"/><line x1="260" y1="210" x2="442" y2="250" class="g-edge" style="animation-delay:1.05s"/><line x1="260" y1="210" x2="362" y2="368" class="g-edge" style="animation-delay:1.40s"/><line x1="260" y1="210" x2="158" y2="368" class="g-edge" style="animation-delay:1.75s"/><line x1="260" y1="210" x2="78" y2="250" class="g-edge" style="animation-delay:2.10s"/>
+              <circle cx="260" cy="210" r="56" class="g-halo"/>
+              <circle cx="260" cy="210" r="42" fill="url(#gGrad)"/>
+              <defs><linearGradient id="gGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#863bff"/><stop offset="1" stop-color="#4c1d95"/></linearGradient></defs>
+              <text x="260" y="206" text-anchor="middle" class="g-center">Employee</text><text x="260" y="222" text-anchor="middle" class="g-center-s">who is asking</text>
+              <g class="g-node" style="animation-delay:0.00s"><rect x="204" y="30" width="112" height="44" rx="12"/><circle cx="218" cy="52" r="4" fill="#863bff"/><text x="230" y="48" class="g-type">DEPARTMENT</text><text x="230" y="64" class="g-name">Finance</text></g><g class="g-node" style="animation-delay:0.12s"><rect x="41" y="90" width="125" height="44" rx="12"/><circle cx="55" cy="112" r="4" fill="#863bff"/><text x="67" y="108" class="g-type">MANAGER</text><text x="67" y="124" class="g-name">Line manager</text></g><g class="g-node" style="animation-delay:0.24s"><rect x="360" y="90" width="112" height="44" rx="12"/><circle cx="374" cy="112" r="4" fill="#3B82F6"/><text x="386" y="108" class="g-type">ASSET</text><text x="386" y="124" class="g-name">Laptop</text></g><g class="g-node" style="animation-delay:0.36s"><rect x="386" y="228" width="112" height="44" rx="12"/><circle cx="400" cy="250" r="4" fill="#3B82F6"/><text x="412" y="246" class="g-type">APPLICATION</text><text x="412" y="262" class="g-name">VPN client</text></g><g class="g-node g-new" style="animation-delay:0.48s"><rect x="277" y="346" width="171" height="44" rx="12"/><circle cx="291" cy="368" r="4" fill="#D97706"/><text x="303" y="364" class="g-type">TICKET</text><text x="303" y="380" class="g-name">VPN not connecting</text></g><g class="g-node" style="animation-delay:0.60s"><rect x="102" y="346" width="112" height="44" rx="12"/><circle cx="116" cy="368" r="4" fill="#059669"/><text x="128" y="364" class="g-type">KB ARTICLE</text><text x="128" y="380" class="g-name">VPN guide</text></g><g class="g-node" style="animation-delay:0.72s"><rect x="8" y="228" width="140" height="44" rx="12"/><circle cx="22" cy="250" r="4" fill="#059669"/><text x="34" y="246" class="g-type">AUTOMATION</text><text x="34" y="262" class="g-name">Onboarding run</text></g>
+            </svg>
+          <p class="pane-note"><svg class="ic"><use href="#i-repeat"/></svg>New ticket written back just now, ready for the next request</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="py-20 lg:py-28 relative">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="mb-12 max-w-3xl reveal">
       <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent">How it works</p>
       <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950">From question to resolution, in one conversation</h2>
     </div>
-    <ol class="flow-steps reveal">
+    <ol class="flow-steps flow-5 reveal">
       <li><span class="fs-ic" style="background:#3B82F610;color:#3B82F6"><svg class="ic"><use href="#i-chat"/></svg></span><span class="fs-n">01</span><h3>Ask</h3><p>In any channel, in plain words</p></li>
-      <li><span class="fs-ic" style="background:#863bff10;color:#863bff"><svg class="ic"><use href="#i-graph"/></svg></span><span class="fs-n">02</span><h3>Understand</h3><p>Wexa knows who is asking and what they use</p></li>
-      <li><span class="fs-ic" style="background:#F59E0B10;color:#D97706"><svg class="ic"><use href="#i-bolt"/></svg></span><span class="fs-n">03</span><h3>Act</h3><p>An answer, a ticket or an automation</p></li>
-      <li><span class="fs-ic" style="background:#10B98110;color:#059669"><svg class="ic"><use href="#i-table"/></svg></span><span class="fs-n">04</span><h3>Smart Learning</h3><p>Every step is logged and remembered, so the next request is handled better</p></li>
+      <li><span class="fs-ic" style="background:#863bff10;color:#863bff"><svg class="ic"><use href="#i-graph"/></svg></span><span class="fs-n">02</span><h3>Understand</h3><p>The Context graph knows who is asking and what they use</p></li>
+      <li><span class="fs-ic" style="background:#F59E0B10;color:#D97706"><svg class="ic"><use href="#i-shield"/></svg></span><span class="fs-n">03</span><h3>Check policy</h3><p>Governance checks what is allowed, and who must approve</p></li>
+      <li><span class="fs-ic" style="background:#10B98110;color:#059669"><svg class="ic"><use href="#i-bolt"/></svg></span><span class="fs-n">04</span><h3>Act</h3><p>An answer, a ticket or an automation</p></li>
+      <li><span class="fs-ic" style="background:#EF444410;color:#EF4444"><svg class="ic"><use href="#i-repeat"/></svg></span><span class="fs-n">05</span><h3>Smart Learning</h3><p>Every step is logged and remembered, so the next request is handled better</p></li>
     </ol>
     <p class="mt-14 mb-5 text-[17px] font-semibold text-slate-900 reveal">Watch it happen. The chat is on the left, and what Wexa does behind the scenes is on the right.</p>
     <div class="tabs reveal" role="tablist">
@@ -487,9 +580,10 @@
       <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent">Architecture</p>
       <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950">Built on Wexa Fabric</h2>
     </div>
-    <div class="arch-notes reveal">
-      <div><span><svg class="ic"><use href="#i-graph"/></svg></span><h3>It knows your organisation</h3><p>A live map of your people, teams, apps, devices and tickets.</p></div>
+    <div class="arch-notes arch-notes-4 reveal">
+      <div><span><svg class="ic"><use href="#i-graph"/></svg></span><h3>Context graph</h3><p>A live map of your people, teams, apps, devices and tickets. <a href="#context-graph" class="text-accent font-semibold">See how →</a></p></div>
       <div><span><svg class="ic"><use href="#i-plug"/></svg></span><h3>It works through your tools</h3><p>Secure connectors. Your ticket tool stays the system of record.</p></div>
+      <div><span><svg class="ic"><use href="#i-shield"/></svg></span><h3>Governance</h3><p>Wraps every call: policies, approvals, masking and audit. <a href="#governance" class="text-accent font-semibold">See how →</a></p></div>
       <div><span><svg class="ic"><use href="#i-repeat"/></svg></span><h3>Smart Learning</h3><p>Learns from every action. Each step is written back, so the next request starts with the latest context.</p></div>
     </div>
     <div class="arch mt-10 reveal" role="img" aria-label="Architecture: channels feed Wexa Desk agents, which run on Wexa Fabric and act on connected systems; a governance plane wraps every call">
@@ -520,7 +614,7 @@
         <div class="tier">
           <div class="tier-head"><span class="font-mono text-[11px] tracking-[0.1em] text-slate-400">03</span><p class="text-[15px] font-semibold text-slate-900">Wexa Fabric</p><span class="ml-auto h-2 w-2 shrink-0 rounded-full" style="background:#10B981"></span></div>
           <div class="tier-nodes">
-            <span class="node node-feat"><svg class="ic"><use href="#i-graph"/></svg><b>Context graph</b>people, apps, devices, tickets</span>
+            <span class="node node-feat node-hl"><svg class="ic"><use href="#i-graph"/></svg><b>Context graph</b>people, apps, devices, tickets</span>
             <span class="node node-feat"><svg class="ic"><use href="#i-books"/></svg><b>Knowledge base</b>articles and runbooks</span>
             <span class="node node-feat"><svg class="ic"><use href="#i-flow"/></svg><b>Automation Core</b>published multi-agent flows</span>
             <span class="node node-feat"><svg class="ic"><use href="#i-table"/></svg><b>Activity logs</b>every message and run</span>
@@ -536,7 +630,7 @@
           </div>
         </div>
       </div>
-      <aside class="gov">
+      <aside class="gov gov-hl">
         <div class="tier-head"><svg class="ic text-amber-600"><use href="#i-shield"/></svg><p class="text-[15px] font-semibold text-slate-900">Governance plane</p><span class="ml-auto h-2 w-2 shrink-0 rounded-full" style="background:#F59E0B"></span></div>
         <p class="-mt-1 mb-3 text-[13px] text-slate-500">Wraps every agent call</p>
         <span class="node node-gov"><svg class="ic"><use href="#i-list"/></svg>Versioned policies</span>
@@ -549,20 +643,13 @@
     </div>
   </div>
 </section>
-<section class="py-20 lg:py-28 relative bg-slate-50">
+<section id="governance" class="py-20 lg:py-28 relative bg-slate-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="split">
       <div class="split-text">
-        <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent reveal">Security and governance</p>
+        <p class="mb-4 font-mono text-[14px] font-black uppercase tracking-[0.18em] text-accent reveal">Governance</p>
         <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950 reveal">AI that acts, inside your rules</h2>
-        <ul class="gov-list reveal">
-          <li><span><svg class="ic"><use href="#i-check"/></svg></span>Sensitive steps pause for a named approver</li>
-          <li><span><svg class="ic"><use href="#i-mask"/></svg></span>Personal data is masked before any AI model sees it</li>
-          <li><span><svg class="ic"><use href="#i-list"/></svg></span>Every action is audited, with the policy it followed</li>
-          <li><span><svg class="ic"><use href="#i-key"/></svg></span>Credentials stay in Wexa Fabric, never in prompts</li>
-          <li><span><svg class="ic"><use href="#i-chip"/></svg></span>You choose the AI model for each agent</li>
-          <li><span><svg class="ic"><use href="#i-cloud"/></svg></span>Runs in Wexa cloud, or in your VPC, on-premises or air-gapped</li>
-        </ul>
+        <div class="gov-groups reveal"><div class="gov-grp"><p class="gov-grp-t">Control</p><ul class="gov-list"><li><span><svg class="ic"><use href="#i-list"/></svg></span>Versioned policies change agent behaviour instantly</li><li><span><svg class="ic"><use href="#i-check"/></svg></span>Named approvers for sensitive steps</li></ul></div><div class="gov-grp"><p class="gov-grp-t">Protect</p><ul class="gov-list"><li><span><svg class="ic"><use href="#i-mask"/></svg></span>Personal data masked before any AI model sees it</li><li><span><svg class="ic"><use href="#i-key"/></svg></span>Credentials stay in Wexa Fabric, never in prompts</li></ul></div><div class="gov-grp"><p class="gov-grp-t">Prove</p><ul class="gov-list"><li><span><svg class="ic"><use href="#i-table"/></svg></span>A full audit trail for every action, with the policy it followed</li><li><span><svg class="ic"><use href="#i-cloud"/></svg></span>AI model chosen per agent, deployed in Wexa cloud, your VPC, on-premises or air-gapped</li></ul></div></div>
       </div>
       <div class="split-visual">
         <div class="space-y-4 reveal">
@@ -580,6 +667,15 @@
               <div class="mini-row"><span>Share salary details</span><span class="pill pill-red">Blocked</span></div>
             </div>
           </div>
+          <div class="vis-card">
+            <p class="mb-3 text-[10px] font-mono uppercase tracking-widest text-slate-500">Audit trail</p>
+            <div class="audit">
+              <div class="audit-h"><span>Actor</span><span>Action</span><span>Policy</span><span>Result</span></div>
+              <div class="audit-r"><span>Automation Core</span><span>Create email account</span><span>Account creation</span><span class="pill pill-green">Done</span></div>
+              <div class="audit-r"><span>Manager</span><span>Approve SAP access</span><span>SAP needs approval</span><span class="pill pill-green">Approved</span></div>
+              <div class="audit-r"><span>Answer agent</span><span>Share salary details</span><span>Salary data</span><span class="pill pill-red">Blocked</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -593,7 +689,7 @@
         <h2 class="font-black tracking-[-0.045em] text-[clamp(2.3rem,3.6vw,3.6rem)] leading-[1.05] text-slate-950">Asked directly</h2>
       </div>
       <div class="faqs reveal">
-        <details class="faq" open><summary>Does this replace our ticket tool?<span aria-hidden="true">+</span></summary><p>No. Your ticket tool stays the system of record. Wexa raises, reads and updates tickets in it, for example ServiceNow, Jira or Zendesk.</p></details>
+        <details class="faq" open><summary>Does this replace our ticket tool?<span aria-hidden="true">+</span></summary><p>No. Your ticket tool stays the system of record. Wexa raises, reads and updates tickets in it, for example ServiceNow, Jira or Zendesk, and links each one in the Context graph so the next request sees it.</p></details>
         <details class="faq"><summary>Do we need developers to build automations?<span aria-hidden="true">+</span></summary><p>No. Automation Core builds them from a plain-English description, or from a resolved ticket. Every automation is tested and approved before it goes live.</p></details>
         <details class="faq"><summary>What can the AI do without approval?<span aria-hidden="true">+</span></summary><p>Only what your policies allow. Sensitive actions, such as granting access or creating accounts, pause for a named approver.</p></details>
         <details class="faq"><summary>Where does our data live?<span aria-hidden="true">+</span></summary><p>In Wexa cloud, or in your own VPC, on-premises or air-gapped. Personal data is masked before any AI model sees it.</p></details>
@@ -640,6 +736,21 @@
     </div>
   </div>
 </section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="relative overflow-hidden bg-white py-20 lg:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="max-w-[52ch] reveal">
+      <span class="inline-flex items-center rounded-full border border-accent/20 bg-accent/8 px-3.5 py-1 font-mono text-[14px] font-black uppercase tracking-[0.14em] text-accent mb-4">IT / ITSM</span>
+      <h2 class="font-black tracking-[-0.04em] text-slate-900 text-[clamp(2.4rem,4vw,4rem)] leading-[1.06] mb-4">See it run on your service desk.</h2>
+      <p class="text-base md:text-lg text-slate-600 mb-8">Book a 30-minute scoping call. We respond within one business day.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="https://calendly.com/vamsi-krishna-wexa/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 font-medium rounded-lg cursor-pointer select-none bg-accent text-white hover:bg-accent-hover shadow-[0_4px_14px_-3px_rgba(134,59,255,0.4)] h-13 px-7 text-base">Book a Demo <span aria-hidden="true">→</span></a>
+        <a href="#download" class="inline-flex items-center justify-center gap-2 font-medium rounded-lg cursor-pointer select-none bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-200 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)] h-13 px-7 text-base">Download the case study <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer class="border-t border-slate-200 bg-[#f8fafc]"><div class="mx-auto max-w-7xl px-6 py-16 lg:px-8"><div class="grid gap-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16"><div><div class="mb-6"><span class="inline-flex flex-row items-center gap-2.5 leading-none " role="img" aria-label="Wexa"><img src="https://wexa.ai/assets/wexa-icon-CTN6Zuvz.svg" alt="" aria-hidden="true" style="height:34px;width:34px;display:block" class=""/><span class="text-xl font-black tracking-[0.08em] leading-none text-slate-950" aria-hidden="true">WEXA</span></span></div><div class="space-y-3"><div class="flex items-start gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-900"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2.25 14.25 4.5v4.25c0 3.15-2.1 5.6-5.25 6.75-3.15-1.15-5.25-3.6-5.25-6.75V4.5L9 2.25Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"></path><path d="m6.45 8.9 1.7 1.7 3.35-3.45" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><div><p class="text-sm font-semibold leading-tight text-slate-900">Enterprise-grade security</p><p class="mt-0.5 text-xs font-medium leading-5 text-slate-500">SOC 2 Type I certified</p></div></div><div class="flex items-start gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-900"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="1.8" fill="white"></circle><circle cx="9" cy="3.5" r="1.4" fill="white"></circle><line x1="9" y1="5.0" x2="9" y2="7.2" stroke="white" stroke-width="1.5" stroke-linecap="round"></line><circle cx="14.2" cy="11.7" r="1.4" fill="white"></circle><line x1="13.3" y1="10.3" x2="10.6" y2="9.8" stroke="white" stroke-width="1.5" stroke-linecap="round"></line><circle cx="3.8" cy="11.7" r="1.4" fill="white"></circle><line x1="4.7" y1="10.3" x2="7.4" y2="9.8" stroke="white" stroke-width="1.5" stroke-linecap="round"></line></svg></span><div><p class="text-sm font-semibold leading-tight text-slate-900">Model agnostic</p><p class="mt-0.5 text-xs font-medium leading-5 text-slate-500">Hosted, BYO, and local models</p></div></div><div class="flex items-start gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-900"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.25 11.6h9.2a2.9 2.9 0 0 0 .45-5.75 4.15 4.15 0 0 0-7.85-1.1A3.55 3.55 0 0 0 4.25 11.6Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.3 14.1h7.4" stroke="white" stroke-width="1.5" stroke-linecap="round"></path></svg></span><div><p class="text-sm font-semibold leading-tight text-slate-900">Deployable anywhere</p><p class="mt-0.5 text-xs font-medium leading-5 text-slate-500">Cloud, VPC, on-prem, air-gapped</p></div></div><div class="flex items-start gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-900"><svg width="28" height="28" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="8.8" r="1.15" fill="white"></circle><circle cx="22.599999999999998" cy="10.032566285183165" r="1.15" fill="white"></circle><circle cx="25.967433714816835" cy="13.4" r="1.15" fill="white"></circle><circle cx="27.2" cy="18" r="1.15" fill="white"></circle><circle cx="25.967433714816835" cy="22.599999999999998" r="1.15" fill="white"></circle><circle cx="22.599999999999998" cy="25.967433714816835" r="1.15" fill="white"></circle><circle cx="18" cy="27.2" r="1.15" fill="white"></circle><circle cx="13.399999999999999" cy="25.967433714816835" r="1.15" fill="white"></circle><circle cx="10.032566285183167" cy="22.6" r="1.15" fill="white"></circle><circle cx="8.8" cy="18" r="1.15" fill="white"></circle><circle cx="10.032566285183165" cy="13.399999999999999" r="1.15" fill="white"></circle><circle cx="13.399999999999995" cy="10.032566285183167" r="1.15" fill="white"></circle></svg></span><div><p class="text-sm font-semibold leading-tight text-slate-900">GDPR-compliant</p><p class="mt-0.5 text-xs font-medium leading-5 text-slate-500">EU deployment and data-residency controls</p></div></div></div><div class="mt-8 space-y-6 border-t border-slate-200 pt-8"><div><p class="mb-2 text-sm font-semibold text-slate-600">Headquarters <span class="mx-1.5 text-slate-300">•</span><span>--:--:--</span></p><address class="not-italic text-xs leading-relaxed text-slate-500"><span class="text-sm font-semibold text-slate-800">Visionwexa Software Private Limited</span><br/>H.No 6-135/2/SRK/18, SRK Green Park, Bowrampet,<br/>Rangareddy, K.V.Rangareddy 500043, Telangana<br/>India</address></div><div><p class="mb-2 text-sm font-semibold text-slate-600">US office <span class="mx-1.5 text-slate-300">•</span><span>--:--:--</span></p><address class="not-italic text-xs leading-relaxed text-slate-500"><span class="text-sm font-semibold text-slate-800">Wexa, Inc.</span><br/>2261 Market Street, Suite 86018,<br/>San Francisco, CA 94114<br/>United States</address></div></div></div><div class="grid grid-cols-2 gap-8 md:grid-cols-3 xl:grid-cols-4"><div><h3 class="mb-5 font-mono text-[12px] font-black uppercase tracking-[0.16em] text-slate-900">Platform</h3><ul class="space-y-3"><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/platform" data-discover="true">Overview</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/platform/context" data-discover="true">Context graph</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/platform" data-discover="true">Process normalization</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/platform/orchestrate" data-discover="true">AI implementation</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/enterprise" data-discover="true">Security</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/enterprise" data-discover="true">Runs everywhere</a></li></ul></div><div><h3 class="mb-5 font-mono text-[12px] font-black uppercase tracking-[0.16em] text-slate-900">Solutions</h3><ul class="space-y-3"><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions" data-discover="true">Financial Services</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions" data-discover="true">Healthcare</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions/serviceops" data-discover="true">IT / ITSM</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions" data-discover="true">Sales / RevOps</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions" data-discover="true">Customer Support</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions" data-discover="true">Supply Chain</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions" data-discover="true">HR</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/solutions" data-discover="true">Compliance</a></li></ul></div><div><h3 class="mb-5 font-mono text-[12px] font-black uppercase tracking-[0.16em] text-slate-900">Developers</h3><ul class="space-y-3"><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/docs" data-discover="true">Documentation</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/docs/what-is-wexa" data-discover="true">What is Wexa</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/docs/get-started/quickstart/mcp-server" data-discover="true">Quickstarts</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/docs/tools/overview" data-discover="true">Tool reference</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/docs/api/authentication" data-discover="true">API reference</a></li></ul></div><div><h3 class="mb-5 font-mono text-[12px] font-black uppercase tracking-[0.16em] text-slate-900">Company</h3><ul class="space-y-3"><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/about-us" data-discover="true">About us</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/team" data-discover="true">Team</a></li><li><a class="text-sm font-medium text-slate-600 transition-colors duration-150 hover:text-slate-950" href="https://wexa.ai/about-us#contact" data-discover="true">Contact us</a></li></ul></div></div></div></div><div class="border-t border-slate-200"><div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 lg:px-8"><div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p class="text-xs font-medium text-slate-500">© <!-- -->2026<!-- --> Wexa, Inc. All rights reserved.</p><div class="flex flex-wrap items-center gap-x-5 gap-y-1"><a class="text-xs font-medium text-slate-500 transition-colors duration-150 hover:text-slate-900" href="https://wexa.ai/privacy" data-discover="true">Privacy Policy</a><a class="text-xs font-medium text-slate-500 transition-colors duration-150 hover:text-slate-900" href="https://wexa.ai/terms" data-discover="true">Terms of Service</a></div></div></div></div></footer>
@@ -659,10 +770,12 @@ const ok = (t) => `<div class="mini-row"><span>${t}</span><span class="pill pill
 const scenes = {
   question: [
     { who: 'Employee', text: "My laptop won't connect to the VPN.",
-      rail: ['i-sort', 'Triage agent', 'Reads the intent: a VPN issue. Looks up who is asking, their laptop and their apps.'] },
+      rail: ['i-sort', 'Triage agent', 'Reads the intent: a VPN issue.'] },
+    { rail: ['i-graph', 'Context graph', 'Looks up the employee, their laptop and the VPN app they use.'] },
     { bot: true, text: 'Your laptop needs the latest VPN client. Here is how to update it. Did that fix it?', extra: '<span class="cite">VPN troubleshooting guide</span>',
       rail: ['i-book', 'Answer agent', 'Finds the fix in the knowledge base and cites the article.'] },
     { who: 'Employee', text: 'No, still not connecting.' },
+    { rail: ['i-shield', 'Governance', 'Checks the policy: raising a ticket is allowed, no approval needed.'] },
     { bot: true, text: "I've raised a ticket for the network team, with our conversation attached.",
       extra: '<div class="dm-card"><div class="mini-row"><span><b>Ticket raised</b> · VPN not connecting</span><span class="pill pill-amber">Assigned</span></div></div>',
       rail: ['i-ticket', 'Ticket agent', 'Raises it in your ticket tool with the full context. No form to fill in.'] },
@@ -674,6 +787,7 @@ const scenes = {
   repeat: [
     { who: 'Manager', text: 'Our new hire starts Monday in Finance. Please set them up.',
       rail: ['i-sort', 'Triage agent', 'Matches the request to a published Automation Core flow for onboarding.'] },
+    { rail: ['i-graph', 'Context graph', 'Pulls the Finance team, its manager and the standard apps for the role.'] },
     { bot: true, text: "I'll run new hire onboarding for Finance, starting Monday. Shall I go ahead?",
       rail: ['i-check', 'Confirms the inputs', 'Checks the details with the manager before acting.'] },
     { who: 'Manager', text: 'Yes, go ahead.' },
